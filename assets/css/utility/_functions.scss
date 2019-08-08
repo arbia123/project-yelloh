@@ -1,0 +1,5 @@
+// function 
+@function fontsize($font-size){
+    @return ($font-size / $font-basic-size) + rem;
+}
+

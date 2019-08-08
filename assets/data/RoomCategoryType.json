@@ -1,0 +1,10 @@
+[
+ {
+   "RoomCategoryTypeId": 1,
+   "RoomCategoryTypeLbl": "lblEmplacement"
+ },
+ {
+   "RoomCategoryTypeId": 2,
+   "RoomCategoryTypeLbl": "lblLocatif"
+ }
+]

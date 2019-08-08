@@ -1,0 +1,15 @@
+.dblock{
+	display: block;
+}
+.dinlineblock{
+	display: inline-block;
+	&.inlinemiddle{
+		vertical-align: middle;
+	}
+	&.inlinetop{
+		vertical-align: top;
+	}
+	&.inlinebottom{
+		vertical-align: bottom;
+	}
+}
