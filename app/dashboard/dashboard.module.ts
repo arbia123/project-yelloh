@@ -13,8 +13,7 @@ import 'd3';
 import 'nvd3';
 import { DynamicModule } from "ng-dynamic-component";
 
-import { HttpClientModule} from '@angular/common/http'
-
+import { HttpClientModule} from '@angular/common/http';
 import { ButtonsModule } from "@progress/kendo-angular-buttons";
 import { GridModule } from "@progress/kendo-angular-grid";
 import { ChartsModule } from "@progress/kendo-angular-charts";

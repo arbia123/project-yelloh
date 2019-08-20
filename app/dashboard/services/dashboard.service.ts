@@ -199,13 +199,13 @@ export class DashboardService implements IDashboardService {
         optionsResult = this.dashboradService.discreteBarChartOptions();
         break;
       case 'pieChart':
-        optionsResult = this.dashboradService.pieChartOptions(options);
+        optionsResult = this.dashboradService.pieChartOptions();
         break;
       case 'lineChart':
         // get the min/max of lineChartData Y axis
         var minYValue = this.getMinYAxis(widgetContent);
         var maxYValue = this.getMaxYAxis(widgetContent);
-        optionsResult = this.dashboradService.lineChartOptions(options);
+        optionsResult = this.dashboradService.lineChartOptions();
         break;
       case 'radarChart':
         optionsResult = this.dashboradService.radarChartOptions();

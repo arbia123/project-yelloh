@@ -93,11 +93,13 @@ export class DashboardChartServiceService {
   /**
    * LineChart - TYPE_ID:3
    */
-  lineChartOptions(myOptions:any) {
+  lineChartOptions() {
     return {
 
       chart: {
         type: 'lineChart',
+        height:250,
+        width:250,
         x: function (d:any) {
           return d.x;
           //console.log (d.x)
@@ -150,10 +152,12 @@ export class DashboardChartServiceService {
   /**
    * PieChart - TYPE_ID:4
    */
-  pieChartOptions(myOptions) {
+  pieChartOptions() {
     return {
       chart: {
         type: 'pieChart',
+        height : 250,
+        width: 200,
         x: function (d:any) {
           return d.key;
         },
@@ -255,6 +259,8 @@ export class DashboardChartServiceService {
     return {
       chart: {
         type: 'multiChart',
+        height : 250,
+        width: 200,
         color: d3.scale.category10().range(),
         useInteractiveGuideline: true,
         showLegend: false,
@@ -318,6 +324,8 @@ export class DashboardChartServiceService {
     return {
       chart: {
         type: 'multiBarChart',
+        height : 250,
+        width: 200,
         color: d3.scale.category10().range(),
         useInteractiveGuideline: true,
         showControls: false,

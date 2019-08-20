@@ -27,6 +27,7 @@ import { NotificationModule } from "@progress/kendo-angular-notification";
 import { DatePickerModule } from "@progress/kendo-angular-dateinputs";
 import { PopupModule } from "@progress/kendo-angular-popup";
 import {HttpClientModule} from '@angular/common/http'
+import { SlideBarComponent } from './shared/slidebar/slidebar.component';
 
 
 
@@ -35,6 +36,7 @@ import {HttpClientModule} from '@angular/common/http'
     AppComponent,
     FilterComponent,
     HeaderComponent,
+    SlideBarComponent,
     ParametreComponent,
     ResetpwdComponent,
     UsersComponent,

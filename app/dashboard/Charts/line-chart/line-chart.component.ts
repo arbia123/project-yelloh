@@ -17,42 +17,30 @@ export class LineChartComponent implements OnInit {
   maxYValue: number;
   minYValue: number;
   myOptions: any={};
-  dashbord: any[];
-  dashboard: any[];
- 
+
+  @Input() widgetConfig
   @Input()
   widget;
   @Input()
   resizeEvent: EventEmitter<any>;
+  widgets: any[];
+  lineCharts: any[]=[];
 
   
   constructor(private dashboardChart: DashboardChartServiceService, private dashbordService: DashboardService) { }
 
-  //@Input() config;
-
 
 
   ngOnInit() {
-
-    // this.options = this.config
-    this.options = this.dashboardChart.lineChartOptions(this.myOptions)
+  console.log(this.widgetConfig)
+    
+    this.options = this.dashboardChart.lineChartOptions()
     this.fetchData();
   } 
 
   fetchData() {
-    this.dashbordService.loadWidget().subscribe((widgetData: any) => {
-      console.log(widgetData)
-      this.dashboard = this.dashbordService.getWidgets(widgetData.widgets)
-      console.log(this.dashboard)
-      this.dashboard.forEach((widget: any) => {
-        if (widget.widgetContent.type === 'lineChart') {
-        
-          this. lineData = widget.widgetContent.data;
-          console.log("data after fetch: " + JSON.stringify(this.lineData) ); }
-      });
+   
+    this.lineData = this.widgetConfig.widgetContent.data;
 
-    });
   }
-
-
 }

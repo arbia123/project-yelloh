@@ -16,29 +16,30 @@ export class MultiBarChartComponent implements OnInit {
    minYValue:number;
    maxYValue :number;
  
-   @Input()
-   widget;
+ 
+   @Input() widgetConfig;
   constructor(private dashboardChart: DashboardChartServiceService, private dashbordService: DashboardService)
    { }
 
   ngOnInit() {
     this.options = this.dashboardChart.multiBarChartOptions();
-  this.fetchData();
+    this.multiBarData = this.widgetConfig.widgetContent.data;
+
   }
-  fetchData(){
-    this.dashbordService.loadWidget().subscribe((widgetData: any) => {
-     console.log(widgetData)
-     this.dashboard = this.dashbordService.getWidgets(widgetData.widgets)
-     console.log(this.dashboard)
-     this.dashboard.forEach((widget: any) => {
-       if (widget.widgetContent.type === 'multiBarChart') {
-         this. multiBarData = widget.widgetContent.data;
-         console.log("data after fetch: " + JSON.stringify(this.multiBarData) );
+//   fetchData(){
+//     this.dashbordService.loadWidget().subscribe((widgetData: any) => {
+//      console.log(widgetData)
+//      this.dashboard = this.dashbordService.getWidgets(widgetData.widgets)
+//      console.log(this.dashboard)
+//      this.dashboard.forEach((widget: any) => {
+//        if (widget.widgetContent.type === 'multiBarChart') {
+//          this. multiBarData = widget.widgetContent.data;
+//          console.log("data after fetch: " + JSON.stringify(this.multiBarData) );
         
 
-       }
-     });
+//        }
+//      });
 
-   });
- }
+//    });
+//  }
 }

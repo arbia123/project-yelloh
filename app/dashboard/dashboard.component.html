@@ -20,18 +20,20 @@
     <div class="gridster-item-content" style="height: 100%; margin: 5px">
 
       <div *ngIf="widget.widgetContent.type ==='pieChart'">
-        <app-pieChart></app-pieChart>
+        <app-pieChart [widgetConfig]="widget"></app-pieChart>
       </div>
       <div *ngIf="widget.widgetContent.type ==='lineChart'">
-        <app-lineChart></app-lineChart>
+        <app-lineChart  [widgetConfig]="widget"></app-lineChart>
       </div>
-    
-        <app-multi-chart *ngIf="widget.widgetContent.type ==='multiChart'"></app-multi-chart>
-      
-        <app-multi-bar-chart *ngIf="widget.widgetContent.type ==='multiBarChart'"></app-multi-bar-chart>
-     
-        <app-cards *ngIf="widget.widgetContent.type ==='card'"></app-cards>
-
+    <div *ngIf="widget.widgetContent.type ==='multiChart'">
+        <app-multi-chart [widgetConfig]="widget" ></app-multi-chart>
+      </div>
+      <div *ngIf="widget.widgetContent.type ==='multiBarChart'">
+        <app-multi-bar-chart [widgetConfig]="widget" ></app-multi-bar-chart>
+      </div>
+      <div *ngIf="widget.widgetContent.type ==='card'">
+        <app-cards  [widgetConfig]="widget" ></app-cards>
+      </div>
       
 
     </div>
