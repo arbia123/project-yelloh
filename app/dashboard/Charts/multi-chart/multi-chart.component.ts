@@ -17,36 +17,37 @@ export class MultiChartComponent implements OnInit {
   public minYValue: number;
   public maxYValue: number;
   @Input()
-  widget;
+  widgetConfig;
   constructor(private dashboardChart: DashboardChartServiceService, private dashbordService: DashboardService) { }
 
   ngOnInit() {
     this.options = this.dashboardChart.multiChartOptions()
 
-    this.fetchData();
-  }
-  fetchData(){
-    this.dashbordService.loadWidget().subscribe((widgetData: any) => {
-    //  console.log(widgetData)
-     this.dashboard = this.dashbordService.getWidgets(widgetData.widgets)
-    //  console.log(this.dashboard)
-     this.dashboard.forEach((widget: any) => {
-       if (widget.widgetContent.type === 'multiChart') {
-         this. multiData = widget.widgetContent.data;
-         console.log("data after fetch: " + JSON.stringify(this.multiData) );
-         this. multiData.map(function(a){a.y = a.y ; return a})
-          this.multiData [0].type = "bar"
-         this.multiData [0].yAxis = 1
-         this.multiData [1].type = "scatter"
-         this.multiData [1].yAxis = 1
-         return this. multiData;
-                };
-       
-       
-       
-     });
+    this.multiData = this.widgetConfig.widgetContent.data;
 
-   });
- }
+  }
+//   fetchData(){
+//     this.dashbordService.loadWidget().subscribe((widgetData: any) => {
+//     //  console.log(widgetData)
+//      this.dashboard = this.dashbordService.getWidgets(widgetData.widgets)
+//     //  console.log(this.dashboard)
+//      this.dashboard.forEach((widget: any) => {
+//        if (widget.widgetContent.type === 'multiChart') {
+//          this. multiData = widget.widgetContent.data;
+//          console.log("data after fetch: " + JSON.stringify(this.multiData) );
+//          this. multiData.map(function(a){a.y = a.y ; return a})
+//           this.multiData [0].type = "bar"
+//          this.multiData [0].yAxis = 1
+//          this.multiData [1].type = "scatter"
+//          this.multiData [1].yAxis = 1
+//          return this. multiData;
+//                 };
+       
+       
+       
+//      });
+
+//    });
+//  }
 
 }

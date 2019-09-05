@@ -12,9 +12,9 @@ import { NvD3Module } from 'ng2-nvd3';
 import 'd3';
 import 'nvd3';
 import { DynamicModule } from "ng-dynamic-component";
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { HttpClientModule} from '@angular/common/http'
-
+import { HttpClientModule} from '@angular/common/http';
 import { ButtonsModule } from "@progress/kendo-angular-buttons";
 import { GridModule } from "@progress/kendo-angular-grid";
 import { ChartsModule } from "@progress/kendo-angular-charts";
@@ -31,7 +31,7 @@ import { MultiBarChartComponent } from './Charts/multi-bar-chart/multi-bar-chart
 import { DashboardChartServiceService } from './services/dashboard-chart-service.service';
 import { DashboardService } from './services/dashboard.service';
 
-
+import {LoginComponent} from '../login/login.component'
 
 @NgModule({
   declarations: [DashboardComponent,
@@ -46,6 +46,7 @@ import { DashboardService } from './services/dashboard.service';
     RadarChartComponent,
     MultiChartComponent,
     MultiBarChartComponent,
+    LoginComponent,
   
     
   ],
@@ -62,6 +63,8 @@ import { DashboardService } from './services/dashboard.service';
     DatePickerModule,
     PopupModule,
     HttpClientModule,
+    FormsModule,    
+    ReactiveFormsModule,
 
 
 

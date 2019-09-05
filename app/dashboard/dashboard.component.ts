@@ -50,18 +50,11 @@ export class DashboardComponent implements OnInit {
       this.resizeEvent.emit(item);
     };
     this.dashboardService.loadWidget().subscribe((widgetData: any) => {
-      //console.log(widgetData)
+ 
       this.widgets = this.dashboardService.getWidgets(widgetData.widgets)
-      //console.log(this.dashboard)
-      // this.widgets.forEach((widget: any) => {
-
-      //  this.dashboard.push(widget)
-
-
-
-      // });
-
-
+    },
+    (err:any)=>{
+      console.log ( err);
     });
 
   }

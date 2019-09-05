@@ -9,7 +9,7 @@ import { PieChartComponent } from './../Charts/pie-chart/pie-chart.component';
 import { DashboardChartServiceService } from '../../dashboard/services/dashboard-chart-service.service'
 import {WidgetList} from './../models/widgetList';
 import { Observable } from 'rxjs/internal/Observable';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import * as _ from "lodash";
 
@@ -39,15 +39,29 @@ export class DashboardService implements IDashboardService {
 
 
  
-  loadWidget():Observable<WidgetList []>{
-  return this.http.get<WidgetList []>(this._url)
+//   loadWidget():Observable<WidgetList []>{
+//   return this.http.get<WidgetList []>(this._url)
+// }
+loadWidget(){
+
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/x-www-form-urlencoded',
+     // 'JSESSIONID' : '2C104058AD393CE420F8CE1F48390EE2',
+    })
+  };  
+      let server = 'http://localhost:8080'
+      let url = server.concat('/CampstatDashboard/dashboardContainer/');
+      let body ='{"itemList":[{"key":"hotelId","value":33},{"key":"roomCategoryTypeIdList","value":[1,2]},{"key":"wTemplateTypeId","value":1},{"key":"sameTypeOfCamping","value":false},{"key":"excellentIsChecked","value":false}]}';
+  return this.http.post(url,body,httpOptions)
+
 }
   public getUserDashBoards(user: User): Array<Dashboard> {
-    return this.userDashboards.get(user.id);
+    return this.userDashboards.get(user.username);
   }
 
   public saveUserDashBoards(user: User): void {
-    localStorage.setItem(user.id, JSON.stringify(this.userDashboards.get(user.id)));
+    localStorage.setItem(user.username, JSON.stringify(this.userDashboards.get(user.username)));
   }
 
   public getDashBoardOptions(): DashboardOptions {
@@ -199,13 +213,13 @@ export class DashboardService implements IDashboardService {
         optionsResult = this.dashboradService.discreteBarChartOptions();
         break;
       case 'pieChart':
-        optionsResult = this.dashboradService.pieChartOptions(options);
+        optionsResult = this.dashboradService.pieChartOptions();
         break;
       case 'lineChart':
         // get the min/max of lineChartData Y axis
         var minYValue = this.getMinYAxis(widgetContent);
         var maxYValue = this.getMaxYAxis(widgetContent);
-        optionsResult = this.dashboradService.lineChartOptions(options);
+        optionsResult = this.dashboradService.lineChartOptions();
         break;
       case 'radarChart':
         optionsResult = this.dashboradService.radarChartOptions();

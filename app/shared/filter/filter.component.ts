@@ -42,26 +42,17 @@ export class FilterComponent implements OnInit {
     this.isvalid = this.dataService.isvisible;
     console.log(this.isvalid);
   }
-  // getHotel(){
-  //   return this.commonService.getHotels()
-  // }
-  // getCategory(){
-  //   return this.commonService.getRoomCategory()
-  // }
-  // getType(){
-  //   return this.commonService.getRoomType()
-  // }
- 
-  filterCategory(RoomCategoryTypeId,dashboardFilter) {
-    this.dashboardFilter.RoomCategoryTypeId=RoomCategoryTypeId;
-    this.dashboardFilter= dashboardFilter
 
-  }
+//   filterCategory(RoomCategoryTypeId,dashboardFilter) {
+//     this.dashboardFilter.RoomCategoryTypeId=RoomCategoryTypeId;
+//     this.dashboardFilter= dashboardFilter
 
- filterhotel(id,dashboardFilter) {
-    this.dashboardFilter.id =id;
-    this.dashboardFilter= dashboardFilter
-  }
+//   }
+
+//  filterhotel(id,dashboardFilter) {
+//     this.dashboardFilter.id =id;
+//     this.dashboardFilter= dashboardFilter
+//   }
   
 }
 

@@ -25,7 +25,7 @@ export class PieChartComponent implements OnInit {
 options :any={};
 myOptions: any={};
 public pieData: any[] = [];
-
+@Input() widgetConfig
   constructor(private dashboardChart: DashboardChartServiceService, private dashbordService: DashboardService)
  {
 
@@ -33,26 +33,13 @@ public pieData: any[] = [];
  
   ngOnInit(){
  
-  this.options = this.dashboardChart.pieChartOptions(this.myOptions);
-  this.fetchData();
+  this.options = this.dashboardChart.pieChartOptions();
+  this.pieData = this.widgetConfig.widgetContent.data;
+
    
   }
   
 
-    fetchData(){
-     this.dashbordService.loadWidget().subscribe((widgetData: any) => {
-      console.log(widgetData)
-      this.dashboard = this.dashbordService.getWidgets(widgetData.widgets)
-      console.log(this.dashboard)
-      this.dashboard.forEach((widget: any) => {
-        if (widget.widgetContent.type === 'pieChart') {
-          this. pieData = widget.widgetContent.data;
-          console.log("data after fetch: " + JSON.stringify(this.pieData) );
-        }
-      });
+   
 
-    });
-  }
 }
-
-

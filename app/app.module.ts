@@ -16,7 +16,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NvD3Module } from 'ng2-nvd3';
 import 'd3';
 import 'nvd3';
-
+import{ NgxWebstorageModule}from 'ngx-webstorage'
+import{CookieService} from 'angular2-cookie/services/cookies.service'
 
 import { ButtonsModule } from "@progress/kendo-angular-buttons";
 import { GridModule } from "@progress/kendo-angular-grid";
@@ -26,9 +27,11 @@ import { DialogModule } from "@progress/kendo-angular-dialog";
 import { NotificationModule } from "@progress/kendo-angular-notification";
 import { DatePickerModule } from "@progress/kendo-angular-dateinputs";
 import { PopupModule } from "@progress/kendo-angular-popup";
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
 
 
+import { AuthInterceptor } from './security/auth.interceptor';
+import { TemplateContentComponent } from './shared/template-content/template-content.component';
 
 @NgModule({
   declarations: [
@@ -39,12 +42,20 @@ import {HttpClientModule} from '@angular/common/http'
     ResetpwdComponent,
     UsersComponent,
     ProfilsComponent,
+    TemplateContentComponent,
+    
+
+    
+ 
+   
+    
     
    
   ],
   
   imports: [
     BrowserModule,
+    NgxWebstorageModule.forRoot(), 
     AppRoutingModule,
     DashboardModule,
     FooterModule,
@@ -58,11 +69,11 @@ import {HttpClientModule} from '@angular/common/http'
     NotificationModule,
     DatePickerModule,
     PopupModule,
-    HttpClientModule 
+    HttpClientModule, 
    
   ],
  
-  providers: [],
+  providers: [CookieService,AuthInterceptor],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

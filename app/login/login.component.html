@@ -1,0 +1,51 @@
+<!-- <div class="card mt-5" style="margin:auto;width: 600px;">
+  <div class="card-body">
+    <h5 class="card-title">Login</h5>
+    <div class="form-group">
+      <label for="email">Username</label>
+      <input type="text" class="form-control" id="username" placeholder="Username" [(ngModel)]="user.username">
+    </div>
+    <div class="form-group">
+      <label for="email">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="user.password">
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="tryLogin()">Login</button>
+
+  </div>
+</div> -->
+
+<div  style="margin:auto;height: 1000px;" [ngStyle]="{background: 'url(assets/images/background.jpg)'}">
+  
+  <div class="card-body" style=" width:400px;
+  height: 400px;  text-align: center; position: absolute;
+  left:30%;
+  top: 20%;
+ " >
+      <h1 class="card-title">Login</h1>
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+  <div class="form-group">
+      <label for="username"><h3>Username</h3></label>
+      <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+      <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+          <div *ngIf="f.username.errors.required">Username is required</div>
+      </div>
+  </div>
+  <div class="form-group">
+      <label for="password"><h3>Password</h3></label>
+      <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+      </div>
+  </div>
+  <div class="form-group">
+      <button [disabled]="loading" class="btn btn-primary">Login</button>
+  </div>
+  <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+</form>
+</div>
+
+</div>
+<!-- <div>
+        <button type="submit" class="btn btn-primary" (click)="tryTest()">test</button>
+      </div> -->
